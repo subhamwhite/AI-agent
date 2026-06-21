@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Muse AI</title>
+
+<style>
+body{
+background:#0f172a;
+color:white;
+font-family:Arial;
+margin:0;
+}
+
+header{
+background:#111827;
+padding:15px;
+text-align:center;
+font-size:24px;
+font-weight:bold;
+}
+
+#chat{
+height:75vh;
+overflow:auto;
+padding:10px;
+}
+
+.msg{
+padding:10px;
+margin:10px 0;
+border-radius:10px;
+}
+
+.user{
+background:#2563eb;
+text-align:right;
+}
+
+.ai{
+background:#1e293b;
+}
+
+.input-box{
+display:flex;
+padding:10px;
+background:#111827;
+}
+
+input{
+flex:1;
+padding:12px;
+border:none;
+border-radius:10px;
+}
+
+button{
+margin-left:5px;
+padding:12px;
+border:none;
+background:#2563eb;
+color:white;
+border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>Creative Muse AI</header>
+
+<div id="chat"></div>
+
+<div class="input-box">
+<input id="prompt" placeholder="Ask Creative Muse...">
+<button onclick="send()">Send</button>
+</div>
+
+<script>
+
+function add(text,type){
+let div=document.createElement("div");
+div.className="msg "+type;
+div.innerHTML=text;
+document.getElementById("chat").appendChild(div);
+}
+
+function send(){
+
+let input=document.getElementById("prompt");
+
+let text=input.value;
+
+if(!text) return;
+
+add(text,"user");
+
+let reply="Creative Muse: ";
+
+if(text.toLowerCase().includes("game"))
+reply+="Create a mobile game with modern UI and smooth controls.";
+
+else if(text.toLowerCase().includes("website"))
+reply+="Build a responsive website using HTML CSS and JavaScript.";
+
+else if(text.toLowerCase().includes("story"))
+reply+="Generate an adventure story with characters and plot twists.";
+
+else
+reply+="I can help with games, websites, stories, prompts and creative ideas.";
+
+setTimeout(()=>{
+add(reply,"ai");
+},500);
+
+input.value="";
+
+}
+
+</script>
+
+</body>
+</html>
